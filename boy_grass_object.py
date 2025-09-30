@@ -18,10 +18,11 @@ class Boy:
         else:
             self.image = load_image('ball41x41.png')
             self.size = 41
+        self.speed = random.randint(2, 10)  # 공마다 다른 속도 부여
 
     def update(self):  # 객체의 상호 작용. 행위
         self.frame = (self.frame + 1) % 8
-        self.y -= 5
+        self.y -= self.speed  # 속도만큼 y값 감소
 
     def draw(self): #객체의 상호 작용. 행위
         self.image.clip_draw(0, 0, self.size, self.size, self.x, self.y)
