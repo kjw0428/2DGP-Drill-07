@@ -12,14 +12,19 @@ class Boy:
     def __init__(self):
         self.x, self.y = random.randint(100, 700), 599
         self.frame = random.randint(0, 7)
-        self.image = load_image('ball21x21.png')
+        if random.choice([True, False]):
+            self.image = load_image('ball21x21.png')
+            self.size = 21
+        else:
+            self.image = load_image('ball41x41.png')
+            self.size = 41
 
     def update(self):  # 객체의 상호 작용. 행위
         self.frame = (self.frame + 1) % 8
         self.y -= 5
 
     def draw(self): #객체의 상호 작용. 행위
-        self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
+        self.image.clip_draw(0, 0, self.size, self.size, self.x, self.y)
         pass
 
 class Grass:
